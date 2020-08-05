@@ -50,6 +50,7 @@ FlightEnquires::FlightEnquires(QWidget *parent) :
     ui(new Ui::FlightEnquires),
     m_queryFlightNo(QString()),
     isStatisticsMode(false),
+    isFillingTable(false),
     orgDepFilledNum(0),
     orgDepFillIndex(0),
     boardingFilledNum(0),
@@ -604,6 +605,12 @@ void FlightEnquires::on_queryPushButton_clicked()
 
 void FlightEnquires::on_orgDepPushButton_clicked()
 {
+    if (isFillingTable) {
+        return;
+    } else {
+        isFillingTable = true;
+    }
+
     int unBoardingNum = 0;
     for (int i=0; i<m_all_ppl_infos.parsedResult.validSize; i++){
         if (m_all_ppl_infos.parsedResult.unboard[i].boardingStatus == 0 && !m_all_ppl_infos.parsedResult.unboard[i].id.isEmpty()){
@@ -634,6 +641,12 @@ void FlightEnquires::on_orgDepPushButton_clicked()
 
 void FlightEnquires::on_boardingPushButton_clicked()
 {
+    if (isFillingTable) {
+        return;
+    } else {
+        isFillingTable = true;
+    }
+
     int unBoardingNum = 0;
     for (int i=0; i<m_all_ppl_infos.parsedResult.validSize; i++){
         if (m_all_ppl_infos.parsedResult.unboard[i].boardingStatus == 0 && !m_all_ppl_infos.parsedResult.unboard[i].id.isEmpty()){
@@ -664,6 +677,12 @@ void FlightEnquires::on_boardingPushButton_clicked()
 
 void FlightEnquires::on_notboardingPushButton_clicked()
 {
+    if (isFillingTable) {
+        return;
+    } else {
+        isFillingTable = true;
+    }
+
     int unBoardingNum = 0;
     for (int i=0; i<m_all_ppl_infos.parsedResult.validSize; i++){
         if (m_all_ppl_infos.parsedResult.unboard[i].boardingStatus == 0 && !m_all_ppl_infos.parsedResult.unboard[i].id.isEmpty()){
@@ -694,6 +713,12 @@ void FlightEnquires::on_notboardingPushButton_clicked()
 
 void FlightEnquires::on_filterPushButton_clicked()
 {
+    if (isFillingTable) {
+        return;
+    } else {
+        isFillingTable = true;
+    }
+
     ui->orgDepTableWidget->clear();
     ui->orgDepTableWidget->scrollToTop();
     while (ui->orgDepTableWidget->rowCount() > 0) {
@@ -732,6 +757,12 @@ void FlightEnquires::on_filterPushButton_clicked()
 
 void FlightEnquires::on_orgDepSliderChanged(int p)
 {
+    if (isFillingTable) {
+        return;
+    } else {
+        isFillingTable = true;
+    }
+
     if ((p+2) == orgDepFilledNum) {
         if (boardingNumberForSlider == QString()) {
             fillTableGradually(m_all_ppl_infos, ui->orgDepTableWidget, Ui::DisplayTab::DepositoryTab);
@@ -743,6 +774,12 @@ void FlightEnquires::on_orgDepSliderChanged(int p)
 
 void FlightEnquires::on_boardingSliderChanged(int p)
 {
+    if (isFillingTable) {
+        return;
+    } else {
+        isFillingTable = true;
+    }
+
     if ((p+2) == boardingFilledNum) {
         if (boardingNumberForSlider == QString()) {
             fillTableGradually(m_all_ppl_infos, ui->boardingTableWidget, Ui::DisplayTab::BoardingTab);
@@ -754,6 +791,12 @@ void FlightEnquires::on_boardingSliderChanged(int p)
 
 void FlightEnquires::on_notBoardingSliderChanged(int p)
 {
+    if (isFillingTable) {
+        return;
+    } else {
+        isFillingTable = true;
+    }
+
     if ((p+2) == notboardingFilledNum) {
         if (boardingNumberForSlider == QString()) {
             fillTableGradually(m_all_ppl_infos, ui->notboardingTableWidget, Ui::DisplayTab::NotBoardingTab);
@@ -838,7 +881,8 @@ void FlightEnquires::on_removeRowClicked(int widgetIndex)
 
 void FlightEnquires::on_interceptClicked(int widgetIndex)
 {
-    qDebug() << "widgetIndex: " << widgetIndex << "intercepted!";
+    int isInterceptLabel = m_all_ppl_infos.parsedResult.results[widgetIndex].isInterceptLabel;
+    qDebug() << "m_all_ppl_infos.parsedResult.results[widgetIndex].isInterceptLabel: " << isInterceptLabel;
 
     if (m_all_ppl_infos.parsedResult.results[widgetIndex].isInterceptLabel == 0) {
         m_all_ppl_infos.parsedResult.results[widgetIndex].isInterceptLabel = 1;
@@ -850,7 +894,8 @@ void FlightEnquires::on_interceptClicked(int widgetIndex)
 
     HttpAPI::instance()->interceptOrCancel(m_all_ppl_infos.parsedResult.results[widgetIndex].flightNumber
                                            , m_all_ppl_infos.parsedResult.results[widgetIndex].id
-                                           , m_flightPlan.flightDate);
+                                           , m_flightPlan.flightDate
+                                           , isInterceptLabel);
 }
 
 void FlightEnquires::on_PhotoClicked(const FlightReviewResult *result)
@@ -1025,6 +1070,8 @@ void FlightEnquires::fillTableGradually(const FlightReviewResponse &response, QT
         filledLine += 1;
         widgetIndex += 1;
     }
+
+    isFillingTable = false;
 }
 
 int FlightEnquires::query(QString &flightNo)

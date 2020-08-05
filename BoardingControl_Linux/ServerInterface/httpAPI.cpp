@@ -724,7 +724,7 @@ Return_MSG HttpAPI::Post(PostUrlType type, const QString& flightNo, const QStrin
     }
 }
 
-Return_MSG HttpAPI::interceptOrCancel(QString flightNo, QString id, QString date)
+Return_MSG HttpAPI::interceptOrCancel(QString flightNo, QString id, QString date, int isInterceptLabel)
 {
     Return_MSG result;
     try {
@@ -744,7 +744,7 @@ Return_MSG HttpAPI::interceptOrCancel(QString flightNo, QString id, QString date
         char* response = nullptr;
         int resLen = 0;
         QByteArray byte_addr = LocalSettings::instance()->value("Server/intercept_Addr").toString().toLatin1();
-        QByteArray byte_api = "/api/v1/face/boarding/lib-label";
+        QByteArray byte_api = (isInterceptLabel == 0) ? "/api/v1/face/boarding/lib-label" : "/api/v1/face/boarding/lib-labelcancel";
 
         if (m_isLogData) {
             qInfo() << QString("[post <%1%2> send body]: \n").arg(QString(byte_addr)).arg(QString(byte_api)) << json;

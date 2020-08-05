@@ -31,7 +31,7 @@ public:
     int enquiryPPL(const QString& cardId, QJsonObject& outObject, bool isBaby = false);
     FlowReviewResponse enquiryPPL(const FlowReviewRequest& request);
     // 2.3.32 底库拦截标记接口/2.3.32 底库取消拦截标记接口
-    Return_MSG interceptOrCancel(QString flightNo, QString id, QString date);
+    Return_MSG interceptOrCancel(QString flightNo, QString id, QString date, int isInterceptLabel);
 
     //闸机控制
     Return_MSG GateCtrl(const int gateChannelNO, gateWorkStatus workStat, gateDoorStatus doorStat);

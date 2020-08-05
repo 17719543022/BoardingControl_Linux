@@ -118,6 +118,8 @@ private:
 
     bool isStatisticsMode;
 
+    bool isFillingTable;
+
     int orgDepFilledNum;
 
     int orgDepFillIndex;

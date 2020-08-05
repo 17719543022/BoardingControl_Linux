@@ -926,7 +926,7 @@ enum API_PARAM_TYPE{
              // 对isSameBoardingNumber记录再排序，
              // 一是为了让相同序列号（考虑三个或者更多记录具有相同序列号的情况）的排在一起，
              // 二是为了让有特征（0/4/5/7）的居于这些重复序列号记录的前部位置。
-             int firstNotSameNumber = 0;
+             int firstNotSameNumber = validSize;
              for (int i = 0; i < validSize && i < 1000; i++) {
                  if (!sortings[i].isSameBoardingNumber) {
                      firstNotSameNumber = i;
