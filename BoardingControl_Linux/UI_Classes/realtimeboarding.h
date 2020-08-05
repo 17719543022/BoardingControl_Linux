@@ -17,10 +17,12 @@ class RealtimeBoarding : public QWidget
 public:
     typedef struct user_BoardingInfo{
             QString name;
+            QString cardId;
             BoardingTicketInfo_S ticket;
             QByteArray scenePhoto;
             void clear(){
                 name.clear();
+                cardId.clear();
                 ticket.clear();
                 scenePhoto.clear();
             }
@@ -58,7 +60,7 @@ private slots:
 
 private:
     void setUI();
-    void showFlightInfo();
+    void changeFlightPlan(const FlightPlan &plan);
 
     void on_showBoardingResult(int channel, bool isManualOperation, int result, int transferType, bool hasSecurityInfo
                                                  , int seatLabel, bool hasBaby, bool moreTicket, bool isMarked
@@ -66,7 +68,8 @@ private:
     void clearAllBoardingInfos();
     void clearInfoThrough_L();
     void clearInfoThrough_R();
-    void changeButtonStatus(bool isBording);
+    void changeBoardingStatus(bool isBoarding);
+
 
 public:
     FlightPlan m_flightPlan;

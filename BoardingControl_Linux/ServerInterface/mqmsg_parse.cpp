@@ -158,6 +158,7 @@ void ParseMQmsg::optType100(QJsonObject& content)
     flight_plan.transferNum=content["transferNum"].toInt();
     flight_plan.midwayNum=content["midwayNum"].toInt();
     flight_plan.faceNums=content["faceNums"].toInt();
+    flight_plan.babyNum=content["babyNum"].toInt();
     QString tmpStr=content["shareFltno"].toString();
     flight_plan.shareFltno=tmpStr.split(",", QString::SkipEmptyParts);
     flight_plan.status=content["status"].toInt();
@@ -197,6 +198,7 @@ void ParseMQmsg::optType101(QJsonObject &content)
     creat_repository.transferNum=content["transferNum"].toInt();
     creat_repository.midwayNum=content["midwayNum"].toInt();
     creat_repository.faceNums=content["faceNums"].toInt();
+    creat_repository.babyNum=content["babyNum"].toInt();
     QString tmpStr=content["shareFltno"].toString();
     creat_repository.shareFltno=tmpStr.split(",", QString::SkipEmptyParts);
     creat_repository.status=content["status"].toInt();
@@ -230,6 +232,7 @@ void ParseMQmsg::optType102(QJsonObject &content)
     bording_start.transferNum=content["transferNum"].toInt();
     bording_start.midwayNum=content["midwayNum"].toInt();
     bording_start.faceNums=content["faceNums"].toInt();
+    bording_start.babyNum=content["babyNum"].toInt();
     QString tmpStr=content["shareFltno"].toString();
     bording_start.shareFltno=tmpStr.split(",", QString::SkipEmptyParts);
     bording_start.status=content["status"].toInt();
@@ -270,6 +273,8 @@ void ParseMQmsg::optType103(QJsonObject &content)
     boarding_end.transferNum=content["transferNum"].toInt();
     boarding_end.midwayNum=content["midwayNum"].toInt();
     boarding_end.faceNums=content["faceNums"].toInt();
+    boarding_end.babyNum=content["babyNum"].toInt();
+
 //    boarding_end.lastRecogTime=content["lastRecogTime"].toString();
     boarding_end.twoFlightNo=content["twoFlightNo"].toString();
 

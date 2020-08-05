@@ -47,6 +47,7 @@ public:
     QPushButton *pushButton_choice_ppl_commit;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *layout_selectPPL;
+    QLabel *label_17;
     QWidget *widget_pssngrInfo;
     QLabel *label_4;
     QLabel *label_idNo_;
@@ -73,7 +74,7 @@ public:
         widget_inquiry->setStyleSheet(QString::fromUtf8("#widget_inquiry{border-image: url(:/3\345\256\236\346\227\266\347\231\273\346\234\272/Images/3\345\256\236\346\227\266\347\231\273\346\234\272/3.2.1/\346\227\205\345\256\242\350\257\246\346\203\205\345\274\271\347\252\227.png);}"));
         pushButton_enquiry = new QPushButton(widget_inquiry);
         pushButton_enquiry->setObjectName(QString::fromUtf8("pushButton_enquiry"));
-        pushButton_enquiry->setGeometry(QRect(330, 20, 90, 38));
+        pushButton_enquiry->setGeometry(QRect(330, 18, 90, 38));
         pushButton_enquiry->setFocusPolicy(Qt::NoFocus);
         pushButton_enquiry->setStyleSheet(QString::fromUtf8("QPushButton{border-image: url(:/3\345\256\236\346\227\266\347\231\273\346\234\272/Images/3\345\256\236\346\227\266\347\231\273\346\234\272/3.2.1/\346\237\245\350\257\2422.png);}\n"
 "QPushButton:pressed{border-image: url(:/3\345\256\236\346\227\266\347\231\273\346\234\272/Images/3\345\256\236\346\227\266\347\231\273\346\234\272/3.2.1/\346\237\245\350\257\242-2-\346\213\267\350\264\235.png);}\n"
@@ -81,7 +82,7 @@ public:
 ""));
         lineEdit_enquiry = new QLineEdit(widget_inquiry);
         lineEdit_enquiry->setObjectName(QString::fromUtf8("lineEdit_enquiry"));
-        lineEdit_enquiry->setGeometry(QRect(20, 20, 300, 38));
+        lineEdit_enquiry->setGeometry(QRect(20, 18, 300, 38));
         QFont font;
         font.setPointSize(16);
         font.setBold(false);
@@ -99,7 +100,7 @@ public:
         lineEdit_enquiry->setMaxLength(18);
         pushButton_return = new QPushButton(widget_inquiry);
         pushButton_return->setObjectName(QString::fromUtf8("pushButton_return"));
-        pushButton_return->setGeometry(QRect(700, 20, 30, 39));
+        pushButton_return->setGeometry(QRect(700, 18, 30, 39));
         pushButton_return->setFocusPolicy(Qt::NoFocus);
         pushButton_return->setStyleSheet(QString::fromUtf8("QPushButton{border:none;}\n"
 "\n"
@@ -111,7 +112,8 @@ public:
         pushButton_return->setIconSize(QSize(30, 39));
         widget_choice_channel = new QWidget(widget_inquiry);
         widget_choice_channel->setObjectName(QString::fromUtf8("widget_choice_channel"));
-        widget_choice_channel->setGeometry(QRect(0, 160, 770, 300));
+        widget_choice_channel->setGeometry(QRect(0, 143, 770, 331));
+        widget_choice_channel->setStyleSheet(QString::fromUtf8("#widget_choice_channel{border-image: url(:/3\345\256\236\346\227\266\347\231\273\346\234\272/Images/3\345\256\236\346\227\266\347\231\273\346\234\272/3.2.1/\346\227\205\345\256\242\350\257\246\346\203\205\345\274\271\347\252\227.png);}"));
         label_16 = new QLabel(widget_choice_channel);
         label_16->setObjectName(QString::fromUtf8("label_16"));
         label_16->setGeometry(QRect(133, 85, 261, 53));
@@ -120,13 +122,13 @@ public:
         font1.setBold(true);
         font1.setWeight(75);
         label_16->setFont(font1);
-        label_16->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+        label_16->setStyleSheet(QString::fromUtf8("color: rgb(155, 255, 255);"));
         label_16->setAlignment(Qt::AlignCenter);
         label_16->setWordWrap(false);
         label_16->setMargin(0);
         pushButton_cancelPass = new QPushButton(widget_choice_channel);
         pushButton_cancelPass->setObjectName(QString::fromUtf8("pushButton_cancelPass"));
-        pushButton_cancelPass->setGeometry(QRect(680, 10, 39, 40));
+        pushButton_cancelPass->setGeometry(QRect(700, 20, 29, 30));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -139,7 +141,7 @@ public:
         pushButton_cancelPass->setIconSize(QSize(29, 30));
         pushButton_specialPassenger = new QPushButton(widget_choice_channel);
         pushButton_specialPassenger->setObjectName(QString::fromUtf8("pushButton_specialPassenger"));
-        pushButton_specialPassenger->setGeometry(QRect(430, 90, 170, 54));
+        pushButton_specialPassenger->setGeometry(QRect(450, 90, 170, 54));
         sizePolicy.setHeightForWidth(pushButton_specialPassenger->sizePolicy().hasHeightForWidth());
         pushButton_specialPassenger->setSizePolicy(sizePolicy);
         pushButton_specialPassenger->setMinimumSize(QSize(138, 45));
@@ -172,10 +174,11 @@ public:
         pushButton_channel_2->setIconSize(QSize(170, 54));
         widget_pass_or_prevent = new QWidget(widget_inquiry);
         widget_pass_or_prevent->setObjectName(QString::fromUtf8("widget_pass_or_prevent"));
-        widget_pass_or_prevent->setGeometry(QRect(0, 160, 770, 300));
+        widget_pass_or_prevent->setGeometry(QRect(0, 150, 770, 324));
+        widget_pass_or_prevent->setStyleSheet(QString::fromUtf8(""));
         layoutWidget = new QWidget(widget_pass_or_prevent);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(60, 0, 601, 291));
+        layoutWidget->setGeometry(QRect(60, 10, 601, 301));
         Layout_result = new QGridLayout(layoutWidget);
         Layout_result->setObjectName(QString::fromUtf8("Layout_result"));
         Layout_result->setHorizontalSpacing(16);
@@ -183,7 +186,7 @@ public:
         Layout_result->setContentsMargins(0, 0, 0, 0);
         layoutWidget_1 = new QWidget(widget_pass_or_prevent);
         layoutWidget_1->setObjectName(QString::fromUtf8("layoutWidget_1"));
-        layoutWidget_1->setGeometry(QRect(660, 160, 101, 131));
+        layoutWidget_1->setGeometry(QRect(660, 160, 101, 151));
         verticalLayout = new QVBoxLayout(layoutWidget_1);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -216,10 +219,11 @@ public:
 
         widget_choice_ppl = new QWidget(widget_inquiry);
         widget_choice_ppl->setObjectName(QString::fromUtf8("widget_choice_ppl"));
-        widget_choice_ppl->setGeometry(QRect(0, 110, 770, 380));
+        widget_choice_ppl->setGeometry(QRect(0, 70, 770, 404));
+        widget_choice_ppl->setStyleSheet(QString::fromUtf8("#widget_choice_ppl{border-image: url(:/3\345\256\236\346\227\266\347\231\273\346\234\272/Images/3\345\256\236\346\227\266\347\231\273\346\234\272/3.2.1/\346\227\205\345\256\242\350\257\246\346\203\205\345\274\271\347\252\227.png);}"));
         pushButton_choice_ppl_commit = new QPushButton(widget_choice_ppl);
         pushButton_choice_ppl_commit->setObjectName(QString::fromUtf8("pushButton_choice_ppl_commit"));
-        pushButton_choice_ppl_commit->setGeometry(QRect(240, 300, 276, 47));
+        pushButton_choice_ppl_commit->setGeometry(QRect(240, 348, 276, 47));
         sizePolicy.setHeightForWidth(pushButton_choice_ppl_commit->sizePolicy().hasHeightForWidth());
         pushButton_choice_ppl_commit->setSizePolicy(sizePolicy);
         pushButton_choice_ppl_commit->setMinimumSize(QSize(276, 47));
@@ -231,13 +235,21 @@ public:
 ""));
         horizontalLayoutWidget = new QWidget(widget_choice_ppl);
         horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(20, 9, 731, 281));
+        horizontalLayoutWidget->setGeometry(QRect(20, 70, 731, 271));
         layout_selectPPL = new QHBoxLayout(horizontalLayoutWidget);
         layout_selectPPL->setObjectName(QString::fromUtf8("layout_selectPPL"));
         layout_selectPPL->setContentsMargins(0, 0, 0, 0);
+        label_17 = new QLabel(widget_choice_ppl);
+        label_17->setObjectName(QString::fromUtf8("label_17"));
+        label_17->setGeometry(QRect(135, 8, 500, 51));
+        label_17->setFont(font1);
+        label_17->setStyleSheet(QString::fromUtf8("color: rgb(155, 255, 255);"));
+        label_17->setAlignment(Qt::AlignCenter);
+        label_17->setWordWrap(false);
+        label_17->setMargin(0);
         widget_pssngrInfo = new QWidget(widget_inquiry);
         widget_pssngrInfo->setObjectName(QString::fromUtf8("widget_pssngrInfo"));
-        widget_pssngrInfo->setGeometry(QRect(0, 70, 770, 100));
+        widget_pssngrInfo->setGeometry(QRect(0, 63, 770, 90));
         label_4 = new QLabel(widget_pssngrInfo);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setGeometry(QRect(260, 10, 90, 30));
@@ -288,7 +300,7 @@ public:
         label_name->setScaledContents(true);
         label_13 = new QLabel(widget_pssngrInfo);
         label_13->setObjectName(QString::fromUtf8("label_13"));
-        label_13->setGeometry(QRect(20, 70, 730, 20));
+        label_13->setGeometry(QRect(20, 75, 730, 20));
         QFont font5;
         font5.setPointSize(6);
         label_13->setFont(font5);
@@ -370,6 +382,7 @@ public:
         pushButton_pass->setText(QString());
         pushButton_prevent->setText(QString());
         pushButton_choice_ppl_commit->setText(QString());
+        label_17->setText(QApplication::translate("inquiryWidget", "\350\257\267\351\200\211\346\213\251\345\257\271\345\272\224\345\272\247\344\275\215\345\217\267\347\232\204\346\227\205\345\256\242\357\274\232", nullptr));
         label_4->setText(QApplication::translate("inquiryWidget", "\350\257\201  \344\273\266  \345\217\267\357\274\232", nullptr));
         label_idNo_->setText(QString());
         label_seatNo_->setText(QString());

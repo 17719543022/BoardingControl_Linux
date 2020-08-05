@@ -41,8 +41,20 @@ void RealtimeBoarding::setUI()
     ui->widget_time->hide();
 }
 
-void RealtimeBoarding::showFlightInfo()
+
+void RealtimeBoarding::changeFlightPlan(const FlightPlan &plan)
 {
+    m_flightPlan = plan;
+
+    if (HomePage::s_mode == 0){
+        HomePage::s_status = m_flightPlan.status;
+        HomePage::s_type = m_boardingMode;
+        if (m_flightPlan.status == 2){
+            changeBoardingStatus(true);
+        }
+        else changeBoardingStatus(false);
+    }
+
     if (m_flightPlan.twoFlightNo.isEmpty())
         ui->label_mainFlightNO_->setText("- - - - - -");
     else ui->label_mainFlightNO_->setText(m_flightPlan.twoFlightNo);
@@ -88,6 +100,7 @@ void RealtimeBoarding::showFlightInfo()
     ui->label_countStart->setNum(m_flightPlan.orgDepNum);
     ui->label_countTransfer->setNum(m_flightPlan.transferNum);
     ui->label_countMidway->setNum(m_flightPlan.midwayNum);
+    ui->label_babyNum->setNum(m_flightPlan.babyNum);
 
     if (m_flightPlan.status != 1 && m_flightPlan.status != 2){//未建库的
            ui->label_picture_plane->setStyleSheet("image: url(:/3实时登机/Images/3实时登机/3.0-3.2/矢量剪影飞机-拷贝.png);");
@@ -108,6 +121,7 @@ void RealtimeBoarding::on_showBoardingResult(int channel, bool isManualOperation
 
     if (1 == channel){
         user_left.name = name;
+        user_left.cardId = cardId;
         user_left.ticket = ticketinfo;
         user_left.scenePhoto = faceImage;
 
@@ -120,6 +134,7 @@ void RealtimeBoarding::on_showBoardingResult(int channel, bool isManualOperation
     }
     else if (2 == channel){
         user_right.name = name;
+        user_right.cardId = cardId;
         user_right.ticket = ticketinfo;
         user_right.scenePhoto = faceImage;
 
@@ -169,8 +184,9 @@ void RealtimeBoarding::on_showBoardingResult(int channel, bool isManualOperation
                 case -1:
                     ui->widget_through1->setStyleSheet("#widget_through1{border-image: url(:/3实时登机/Images/3实时登机/3.0-3.2/通道红.png);}");
                     if (isManualOperation){
-                        ui->label_resultTab_L->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.0-3.2/标记拦截.png"));
-                        ui->label_resultStamp_L->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.0-3.2/标记拦截1.png"));
+                        ui->label_resultTab_L->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.0-3.2/人工拦截.png"));
+                        ui->label_resultStamp_L->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.0-3.2/人工拦截1.png"));
+                        bErrorPlay = false;
                     }
                     else {
                         ui->label_resultTab_L->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.0-3.2/识别失败.png"));
@@ -181,7 +197,6 @@ void RealtimeBoarding::on_showBoardingResult(int channel, bool isManualOperation
 
                 case 0:
                     if (isMarked && !isManualOperation){
-                        ui->widget_through1->setStyleSheet("#widget_through1{border-image: url(:/3实时登机/Images/3实时登机/3.0-3.2/通道红.png);}");
                         ui->label_resultTab_L->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.0-3.2/标记拦截.png"));
                         ui->label_resultStamp_L->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.0-3.2/标记拦截1.png"));
                     }
@@ -215,6 +230,13 @@ void RealtimeBoarding::on_showBoardingResult(int channel, bool isManualOperation
                     else if (transferType == 1 || transferType == 4){
                         ui->label_resultTab_L->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.0-3.2/过站旅客.png"));
                         ui->label_resultStamp_L->clear();
+                        bErrorPlay = false;
+                    }
+                    //不属于以上任何情况(比如强制人工放行的旅客)
+                    else {
+                        ui->label_resultStamp_L->move(215,160);
+                        ui->label_resultTab_L->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.0-3.2/安检验讫.png"));
+                        ui->label_resultStamp_L->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.0-3.2/安检验讫1.png"));
                         bErrorPlay = false;
                     }
                     break;
@@ -281,8 +303,9 @@ void RealtimeBoarding::on_showBoardingResult(int channel, bool isManualOperation
                 case -1:
                     ui->widget_through2->setStyleSheet("#widget_through2{border-image: url(:/3实时登机/Images/3实时登机/3.0-3.2/通道红.png);}");
                     if (isManualOperation){
-                        ui->label_resultTab_R->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.0-3.2/标记拦截.png"));
-                        ui->label_resultStamp_R->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.0-3.2/标记拦截1.png"));
+                        ui->label_resultTab_R->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.0-3.2/人工拦截.png"));
+                        ui->label_resultStamp_R->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.0-3.2/人工拦截1.png"));
+                        bErrorPlay = false;
                     }
                     else {
                         ui->label_resultTab_R->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.0-3.2/识别失败.png"));
@@ -327,6 +350,13 @@ void RealtimeBoarding::on_showBoardingResult(int channel, bool isManualOperation
                     else if (transferType == 1 || transferType == 4){
                         ui->label_resultTab_R->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.0-3.2/过站旅客.png"));
                         ui->label_resultStamp_R->clear();
+                        bErrorPlay = false;
+                    }
+                    //不属于以上任何情况(比如强制人工放行的旅客)
+                    else {
+                        ui->label_resultStamp_R->move(215,160);
+                        ui->label_resultTab_R->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.0-3.2/安检验讫.png"));
+                        ui->label_resultStamp_R->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.0-3.2/安检验讫1.png"));
                         bErrorPlay = false;
                     }
                     break;
@@ -375,13 +405,9 @@ void RealtimeBoarding::on_showBoardingResult(int channel, bool isManualOperation
 
 void RealtimeBoarding::colorPlaneLabel(const FlightPlan& data)
 {
-    Q_UNUSED(data)
     if (data.twoFlightNo == m_flightPlan.twoFlightNo){
-        m_flightPlan = data;
-        if (HomePage::s_mode == 0){
-            HomePage::s_status = m_flightPlan.status;
-            HomePage::s_type = m_boardingMode;
-        }
+        changeFlightPlan(data);
+
         ui->label_picture_plane->setStyleSheet("image: url(:/3实时登机/Images/3实时登机/3.0-3.2/矢量剪影飞机.png);");
         ui->label_mainFlightNO_->setStyleSheet("color: rgb(0, 228, 255);");
     }
@@ -395,6 +421,7 @@ void RealtimeBoarding::update_ppl_num(const content301& data)
         m_flightPlan.midwayNum=data.midwayNum;
         m_flightPlan.transferNum=data.transferNum;
         m_flightPlan.boardingNum=data.boardingNum;
+        m_flightPlan.babyNum=data.babyNum;
 
         ui->label_countBoarding->setNum(data.boardingNum);
         ui->label_countTotal->setNum(data.faceNums);
@@ -402,7 +429,6 @@ void RealtimeBoarding::update_ppl_num(const content301& data)
         ui->label_countMidway->setNum(data.midwayNum);
         ui->label_countTransfer->setNum(data.transferNum);
         ui->label_babyNum->setNum(data.babyNum);
-
     }
 }
 
@@ -435,12 +461,7 @@ bool RealtimeBoarding::is_statrtBoarding(const FlightPlan& data)
         else return false;
     }
 
-    m_flightPlan = data;
-    m_isBording = true;
-    showFlightInfo();
-    changeButtonStatus(true);
-    HomePage::s_status = 2;
-    HomePage::s_type = m_boardingMode;
+    changeFlightPlan(data);
     HomePage::global_instance->on_Button_RealtimeBoarding_clicked();
 
     return true;
@@ -452,9 +473,7 @@ bool RealtimeBoarding::is_endBoarding(const FlightPlan& data)
         return false;
     }
 
-    m_isBording = false;
-    HomePage::s_status = 3;
-    changeButtonStatus(false);
+    changeFlightPlan(data);
     clearAllBoardingInfos();
 
     MessageDialog *msg = new MessageDialog(HomePage::global_instance, "结束登机", QString("%1\n已经结束登机").arg(data.twoFlightNo), 1);
@@ -477,18 +496,7 @@ void RealtimeBoarding::handleResults_flightPlane(API_PARAM_TYPE type, void* _fli
  {
      if(type == FLIGHT_PALNE)
      {
-         m_flightPlan = *static_cast<FlightPlan*>(_flightPlan);
-
-         showFlightInfo();
-
-         if (2 == HomePage::s_status){
-             if (is_statrtBoarding(m_flightPlan)){
-                 HomePage::global_instance->on_Button_RealtimeBoarding_clicked();
-             }
-         }
-         if (3 == HomePage::s_status){
-             is_endBoarding(m_flightPlan);
-         }
+         changeFlightPlan(*static_cast<FlightPlan*>(_flightPlan));
      }
  }
 
@@ -712,22 +720,31 @@ void RealtimeBoarding::on_pushButton_faceImage_L_clicked()
 {
     if (!m_isBording)
         return;
-    if (user_left.ticket.flightNo.isEmpty() && user_left.ticket.boardingNumber.isEmpty())
-        return;
 
     inquiryWidget::instance()->openWindow(inquiryWidget::Channel_1);
-    inquiryWidget::instance()->enquiry(user_left.ticket.flightNo + "#" + user_left.ticket.boardingNumber + "#" + user_left.ticket.seatId);
+
+    if (!user_left.ticket.flightNo.isEmpty() && !user_left.ticket.boardingNumber.isEmpty()) {
+        inquiryWidget::instance()->enquiry(user_left.ticket.flightNo + "#" + user_left.ticket.boardingNumber + "#" + user_left.ticket.seatId);
+    }
+    else if (!user_left.cardId.isEmpty()) {
+        inquiryWidget::instance()->enquiry(user_left.cardId);
+    }
 }
 
 void RealtimeBoarding::on_pushButton_faceImage_R_clicked()
 {
     if (!m_isBording)
         return;
-    if (user_right.ticket.flightNo.isEmpty() && user_right.ticket.boardingNumber.isEmpty())
-        return;
 
     inquiryWidget::instance()->openWindow(inquiryWidget::Channel_2);
-    inquiryWidget::instance()->enquiry(user_right.ticket.flightNo + "#" + user_right.ticket.boardingNumber + "#" + user_right.ticket.seatId);
+
+    if (!user_right.ticket.flightNo.isEmpty() && !user_right.ticket.boardingNumber.isEmpty()) {
+        inquiryWidget::instance()->enquiry(user_right.ticket.flightNo + "#" + user_right.ticket.boardingNumber + "#" + user_right.ticket.seatId);
+    }
+    else if (!user_right.cardId.isEmpty()) {
+        inquiryWidget::instance()->enquiry(user_right.cardId);
+    }
+
 }
 
 void RealtimeBoarding::clearAllBoardingInfos()
@@ -780,9 +797,11 @@ void RealtimeBoarding::clearInfoThrough_R()
     ui->label_resultStamp_R->clear();
     ui->label_resultStamp_R->move(15,110);}
 
-void RealtimeBoarding::changeButtonStatus(bool isBording)
+void RealtimeBoarding::changeBoardingStatus(bool isBoarding)
 {
-    if (isBording){
+    m_isBording = isBoarding;
+
+    if (isBoarding){
         ui->pushButton_startBoarding->hide();
         ui->pushButton_endBoarding->show();
         ui->pushButton_otherFlight->hide();

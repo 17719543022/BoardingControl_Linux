@@ -272,7 +272,7 @@ int HttpServer::boardingResultPares(QJsonObject json)
             ticketInfo.startPort = userInfo.value("startPort").toString("");
             ticketInfo.endPort = userInfo.value("endPort").toString("");
             recognizeType = userInfo.value("recognizeType").toInt(-1);
-            isVipChannel = userInfo.value("isVipChannel").toInt(0);
+            isVipChannel = userInfo.value("isVipChannel").toInt(0) == 1 ? true : false;
             hasBaby = userInfo.value("isCarryBaby").toInt(0);
             moreTicket = userInfo.value("isMultiTicket").toInt(0);
             isMarked = userInfo.value("isInterceptLabel").toInt(0);
@@ -311,8 +311,8 @@ int HttpServer::boardingResultPares(QJsonObject json)
         }
     else if (json["result"].toInt(-1) == 0){
         if(recognizeType == 0){
-            if (json["manualInfo"].toObject().value("secondBoardingPass").toInt(0) != 1  //不是二次登机
-                    && !isMarked && seatLabel == 0 && !hasBaby && !moreTicket) //没有座位缺失，携带婴儿，多张票等警告信息
+            if ((isManualOperation && json["manualInfo"].toObject().value("secondBoardingPass").toInt(0) != 1)  //人工,不是二次登机
+                 || (!isManualOperation && !isMarked && seatLabel == 0 && !hasBaby && !moreTicket)) //不是人工操作的,没有座位缺失，携带婴儿，多张票等警告信息
             {
                 //传输离港信息;
                 QEventLoop pause;

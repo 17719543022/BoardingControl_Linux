@@ -260,6 +260,7 @@ Return_Flight_Plan_Param HttpAPI::getFlightPlan(const QString& boardingGateNo)
                             result.flightPlan.transferNum=flightPlan.value("transferNum").toInt();
                             result.flightPlan.midwayNum=flightPlan.value("midwayNum").toInt();
                             result.flightPlan.faceNums=flightPlan.value("faceNums").toInt();
+                            result.flightPlan.babyNum=flightPlan.value("babyNum").toInt();
                             result.flightPlan.shareFltno=flightPlan.value("shareFltno").toString().split(",", QString::SkipEmptyParts);
                             result.flightPlan.kindType=flightPlan.value("kindType").toInt();
                             result.flightPlan.manulOpt=flightPlan.value("manulOpt").toBool();

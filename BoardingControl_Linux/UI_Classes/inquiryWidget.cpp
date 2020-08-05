@@ -112,11 +112,13 @@ void inquiryWidget::setUI()
         cancelTicket_security = new QLabel(securityImg);
         cancelTicket_security->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.2.1/值机取消-斜章.png"));
         cancelTicket_security->setGeometry(0,38,170,133);
+        cancelTicket_security->hide();
     }
     if (cancelTicket_review == nullptr){
         cancelTicket_review = new QLabel(recheckImg);
         cancelTicket_review->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.2.1/值机取消-斜章.png"));
         cancelTicket_review->setGeometry(0,38,170,133);
+        cancelTicket_review->hide();
     }
 }
 
@@ -441,7 +443,6 @@ void inquiryWidget::show_result_widget(const QJsonObject &result)
     m_userInfo.seatId = result["userInfo"].toObject().value("seatId").toString();
     m_userInfo.startPort = result["userInfo"].toObject().value("startPort").toString();
     m_userInfo.endPort = result["userInfo"].toObject().value("endPort").toString();
-
     m_userInfo.isFocus = result["userInfo"].toObject().value("isFocus").toInt();
     m_userInfo.hasBaby = result["userInfo"].toObject().value("hasBaby").toInt();
     m_userInfo.moreTicket = result["userInfo"].toObject().value("moreTicket").toInt();
@@ -468,11 +469,26 @@ void inquiryWidget::show_result_widget(const QJsonObject &result)
     QString flightNo_transfer = result["transferInfo"].toObject()["flightNo"].toString();
     QString gateNo_transfer = result["transferInfo"].toObject().value("gateNo").toString();
 
+
     int column = 0;
-    //登机和采集一致或者只有登机
+    //登机和采集一致 或者 只有登机采集信息是空的
     if (flightNo_userInfo == flightNo_transfer || flightNo_transfer.isEmpty()){
-        showSecurityInfo(result, column);
-        showReviewInfo(result, column);
+        //如果采集信息是空的，则需要 判断安检是否缺失
+        if (flightNo_transfer.isEmpty()){
+            if (!result["securityInfo"].isNull() && !result["securityInfo"].isUndefined())
+                showSecurityInfo(result, column);
+            else showNoSecurityInfo(result, column);
+
+            if (!result["reviewInfo"].isNull() && !result["reviewInfo"].isUndefined())
+                showReviewInfo(result, column);
+            else if (m_userInfo.isSpecialChannel != 1) //特殊通道可以没有安检信息
+                showNoReviewInfo(result, column);
+        }
+        else {
+            showSecurityInfo(result, column);
+            showReviewInfo(result, column);
+        }
+
         showTransferInfo(result, column);
         showBoardingInfo(result, column);
 
@@ -483,7 +499,7 @@ void inquiryWidget::show_result_widget(const QJsonObject &result)
             HomePage::global_instance->m_RealtimeBoarding->excpDlg->show();
         }
     }
-    //采集和当前一致
+    //采集航班号一样，登机航班号不一样
     else if (flightNo_transfer == HomePage::global_instance->m_RealtimeBoarding->m_flightPlan.twoFlightNo
              || HomePage::global_instance->m_RealtimeBoarding->m_flightPlan.shareFltno.contains(flightNo_transfer)){
 
@@ -495,18 +511,19 @@ void inquiryWidget::show_result_widget(const QJsonObject &result)
         showTransferInfo(result, column);
         showBoardingInfo(result, column);
     }
-    //只有登机和当前一致
+    //登机航班号一样，采集航班号不一样
     else if (flightNo_userInfo == HomePage::global_instance->m_RealtimeBoarding->m_flightPlan.twoFlightNo
              || HomePage::global_instance->m_RealtimeBoarding->m_flightPlan.shareFltno.contains(flightNo_userInfo)){
         m_userInfo.transferSourceType = -1; //设置为非过站旅客
-
+        //判断安检是否缺失
         if (!result["securityInfo"].isNull() && !result["securityInfo"].isUndefined())
             showSecurityInfo(result, column);
         else showNoSecurityInfo(result, column);
 
         if (!result["reviewInfo"].isNull() && !result["reviewInfo"].isUndefined())
             showReviewInfo(result, column);
-        else showNoReviewInfo(result, column);
+        else if (m_userInfo.isSpecialChannel != 1) //特殊通道可以没有安检信息
+            showNoReviewInfo(result, column);
 
         showBoardingInfo(result, column);
     }
@@ -563,7 +580,7 @@ void inquiryWidget::showNoSecurityInfo(const QJsonObject &result, int &column)
         ui->pushButton_pass->hide();
 
     securityImg->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.2.1/照片-退回安检.png"));
-    securityStat->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.2.1/系统验证不通过.png"));
+    securityStat->setPixmap(QPixmap(":/3实时登机/Images/3实时登机/3.2.1/安检无记录.png"));
     ui->Layout_result->addWidget(securityImg,1,column);
     ui->Layout_result->addWidget(securityStat,2,column);
     column++;
@@ -647,33 +664,30 @@ void inquiryWidget::on_IDCardReadInfo(QString cardID, QString nameZh, QByteArray
     Q_UNUSED(nameZh)
     Q_UNUSED(img)
 
-    if (HomePage::s_mode == 0 && inquiryWidget::instance()->x() == 0
-            && (HomePage::global_instance->translationWidget->getCurrentPage() == dynamic_cast<RealtimeBoarding*>(parent()))){
-
+    if (HomePage::global_instance->m_RealtimeBoarding->m_isBording && (HomePage::global_instance->translationWidget->getCurrentPage() == HomePage::global_instance->m_RealtimeBoarding)){
         if(x() == 800){
             openWindow(Channel_Special);
         }
-
-        inquiryWidget::instance()->enquiry(cardID);
+        enquiry(cardID);
     }
 }
 
 void inquiryWidget::on_ReadTicketResult(const BoardingTicketInfo& ticketINfo)
 {
-    if ((1 != HomePage::global_instance->translationWidget->getCurrentPageIndex()))
+    if (!HomePage::global_instance->m_RealtimeBoarding->m_isBording || HomePage::global_instance->translationWidget->getCurrentPage() != HomePage::global_instance->m_RealtimeBoarding)
         return;
 
     if(x() == 800){
         openWindow(Channel_Special);
     }
 
+    resetEnquiryInfo();
     ui->lineEdit_enquiry->setText(ticketINfo.flightNo+ "#" + ticketINfo.boardingNumber+ "#" + ticketINfo.seatId);
     QJsonObject retObject;
 
-    resetEnquiryInfo();
-
     if (0 != enquiry_ppl(ticketINfo, retObject))
         return;
+
     if (!retObject["result"].isArray()){
         MessageDialog msg(this->parentWidget(), "人员回查", "没有该旅客的信息！", 1);
         msg.exec();
@@ -766,16 +780,16 @@ void inquiryWidget::on_pushButton_return_clicked()
 void inquiryWidget::enquiry(const QString& text)
 {
     ui->lineEdit_enquiry->setText(text);
-
     on_pushButton_enquiry_clicked();
 }
 
 void inquiryWidget::on_pushButton_enquiry_clicked()
 {
-    QString text = ui->lineEdit_enquiry->text().toUpper();
     resetEnquiryInfo();
+    QString text = ui->lineEdit_enquiry->text().toUpper();
 
     QJsonObject retObject;
+
     if (0 != enquiry_ppl(text, retObject))
         return;
 
@@ -786,6 +800,7 @@ void inquiryWidget::on_pushButton_enquiry_clicked()
     }
 
     arry_info = retObject["result"].toArray();
+
     if (arry_info.size() == 1){
         QJsonObject result = arry_info.at(0).toObject();
         show_result_widget(result);

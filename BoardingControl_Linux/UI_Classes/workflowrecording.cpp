@@ -661,6 +661,7 @@ void WorkflowRecording::clearInfo()
     ui->passengerFlightLabel_2->clear();
     ui->boardingNumberLabel_2->clear();
     ui->seatIdLabel_2->clear();
+    ui->gateNoLabel_2->clear();
 
     ui->flowTableWidget->scrollToTop();
     while (ui->flowTableWidget->rowCount() > 0 ) {

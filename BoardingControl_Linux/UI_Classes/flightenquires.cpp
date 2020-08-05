@@ -118,6 +118,7 @@ void FlightEnquires::enterStatisticsMode()
 {
     this->isStatisticsMode =true;
 
+    ui->filterLineEdit->clear();
     ui->inputWidget->setVisible(false);
     ui->filterWidget->setVisible(true);
     ui->tabWidget->move(15, 320);
@@ -610,6 +611,7 @@ void FlightEnquires::on_orgDepPushButton_clicked()
     } else {
         isFillingTable = true;
     }
+    ui->filterLineEdit->clear();
 
     int unBoardingNum = 0;
     for (int i=0; i<m_all_ppl_infos.parsedResult.validSize; i++){
@@ -646,6 +648,7 @@ void FlightEnquires::on_boardingPushButton_clicked()
     } else {
         isFillingTable = true;
     }
+    ui->filterLineEdit->clear();
 
     int unBoardingNum = 0;
     for (int i=0; i<m_all_ppl_infos.parsedResult.validSize; i++){
@@ -682,6 +685,7 @@ void FlightEnquires::on_notboardingPushButton_clicked()
     } else {
         isFillingTable = true;
     }
+    ui->filterLineEdit->clear();
 
     int unBoardingNum = 0;
     for (int i=0; i<m_all_ppl_infos.parsedResult.validSize; i++){
@@ -1147,6 +1151,7 @@ void FlightEnquires::clearAllInfo()
     ui->label_arrivalPlace->setText("- - - -");
     ui->label_midPlace->setText("");
     ui->ScrollText_shareFlight->setTextList(QStringList());
+    ui->filterLineEdit->clear();
 
     m_queryFlightNo = "";
     m_flightPlan = FlightPlan();

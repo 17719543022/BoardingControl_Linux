@@ -494,11 +494,7 @@ void HomePage::onRecivedMQmsg(int type)
     switch (type) {
     case 100:
     {
-        if (HomePage::s_mode == 0){
-            HomePage::s_status = m_pMQmsg->flight_plan.status;
-        }
-        m_RealtimeBoarding->m_flightPlan = m_pMQmsg->flight_plan;
-        m_RealtimeBoarding->showFlightInfo();
+        m_RealtimeBoarding->changeFlightPlan(m_pMQmsg->flight_plan);
         break;
     }
     case 101:

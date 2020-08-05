@@ -25,61 +25,6 @@ typedef struct
     QString msg;        //对当前结果的描述
 }Return_MSG;
 
-/*2.3.14 调度系统开始登机接口     接口路径：/api/v1/face/boarding/start*******************************************************************/
-typedef struct{
-    QString reqId;
-    QString flightNo;       //航班号
-    QString gateNo;     //登机口编码
-    QString boardingGate;       //登机口
-    QString deviceCode;     //设备编码
-    QString flightDay;	//航班日期，yyyy-MM-dd
-}Request_Start_Bording;
-/*******************************************************************************************************/
-
-/*2.3.15 调度系统结束登机接口      接口路径：/api/v1/face/boarding/finish*******************************************************************/
-typedef struct{
-    QString reqId;
-    QString flightNo;
-    QString gateNo;
-    QString boardingGate;
-    QString deviceCode;
-    QString flightDay;	//航班日期，yyyy-MM-dd
-}Request_End_Bording;
-/*******************************************************************************************************/
-
-/*2.3.16 调度系统其余航班登机      接口路径：/api/v1/face/boarding/strange*******************************************************************/
-typedef struct{
-    QString reqId;
-    QString flightNo;
-    QString gateNo;
-    QString boardingGate;
-    QString deviceCode;
-    QString flightDay;	//航班日期，yyyy-MM-dd
-}Request_Other_Flight_Bording;
-/*******************************************************************************************************/
-
-/*2.3.27 调度系统异常航班激活       接口路径：/api/v1/face/boarding/active*******************************************************************/
-typedef struct{
-    QString reqId;
-    QString flightNo;       //航班号
-    QString gateNo;     //登机口编码
-    QString boardingGate;       //登机口
-    QString deviceCode;     //设备编码
-    QString flightDay;	//航班日期，yyyy-MM-dd
-}Request_Exception_Flight_Bording;
-/*******************************************************************************************************/
-
-/*2.3.29 调度系统人工取消航班  接口路径：/api/v1/face/boarding/cancel*******************************************************************/
-typedef struct{
-    QString reqId;
-    QString flightNo;
-    QString gateNo;
-    QString boardingGate;
-    QString deviceCode;
-    QString flightDay;	//航班日期，yyyy-MM-dd
-}Request_Manual_Cancel_Bording;
-/*******************************************************************************************************/
-
 
 /*2.3.17 调度系统拉取航班计划   接口路径：/api/v1/face/boarding/flightplan*******************************************************************/
 /*100-发布航班计划 paramList******************************************************************************/
@@ -102,6 +47,7 @@ typedef struct FlightPlan_s{                                                    
     int transferNum{0};       //中转人数
     int midwayNum{0};     //经停人数
     int faceNums{0};      //航班建库总数
+    int babyNum{0};         //
     QStringList shareFltno;          //共享航班                                                                                                                                             /**/
     int  kindType{-1};       //非必须    航班类型  0-原始，1-增加航班，2-删除航班，3-备降航班，4-二次返航航班                            /**/
     bool manulOpt{false};      //非必须    true-人工拉取的航班，false-非人工拉取的航班                                                                   /**/
@@ -133,6 +79,7 @@ typedef struct FlightPlan_s{                                                    
         this->transferNum = other.transferNum;
         this->midwayNum = other.midwayNum;
         this->faceNums = other.faceNums;
+        this->babyNum = other.babyNum;
         return *this;
     }
 }FlightPlan;                                                                                                                                                                                                 /**/
@@ -167,147 +114,6 @@ typedef struct
     Msg msg;
 }MqQueueMsg_Style;
 
-/*101-建库消息 paramList**********************************************************************************/
-typedef struct content101_s{                                                                                                                                                                 /**/
-    QString threeFlightNo;        //非必须    航班3字码                                                                                                                /**/
-    QString twoFlightNo;      //非必须    航班2字码                                                                                                                     /**/
-    QString depTimeJ{""};         //非必须    预计起飞时间                                                                                                                 /**/
-    QString flightDate;       //非必须    航班日期yyyy-MM-dd                                                                                                     /**/
-    int status{-1};                  //非必须    航班状态  0-等待，1-建库，2-开始登机，3-结束登机，4-起飞                                            /**/
-    QString midwayCode;       //非必须    中转机场3字码                                                                                                           /**/
-    QString midwayName;       //非必须    中转机场名称                                                                                                            /**/
-    QString arrAirportCode;	    //非必须    到达机场3字码                                                                                                        /**/
-    QString arrAirportName;	    //非必须    到达机场名                                                                                                              /**/
-    QString depAirportCode;	    //非必须    起飞机场3字码                                                                                                        /**/
-    QString depAirportName;	//非必须    起飞机场名称                                                                                                          /**/
-    QStringList shareFltno;                                                                                                                                                                         /**/
-    int  kindType{-1};       //非必须    航班类型  0-原始，1-增加航班，2-删除航班，3-备降航班，4-二次返航航班                           /**/
-    bool manulOpt{false};      //非必须    true-人工拉取的航班，false-非人工拉取的航班                                                                  /**/
-    QString boardingGate;     //非必须    登机口
-
-    content101_s &operator=(const content101_s& other){
-        if (this == &other)
-            return *this;
-        this->arrAirportCode = other.arrAirportCode;
-        this->arrAirportName = other.arrAirportName;
-        this->boardingGate = other.boardingGate;
-        this->depAirportCode = other.depAirportCode;
-        this->depAirportName = other.depAirportName;
-        this->depTimeJ = other.depTimeJ;
-        this->flightDate = other.flightDate;
-        this->kindType = other.kindType;
-        this->manulOpt = other.manulOpt;
-        this->midwayCode = other.midwayCode;
-        this->midwayName = other.midwayName;
-        shareFltno.clear();
-        this->shareFltno = other.shareFltno;
-        this->status = other.status;
-        this->threeFlightNo = other.threeFlightNo;
-        this->twoFlightNo = other.twoFlightNo;
-        return *this;
-    }                                                                                                                                                                                                             /**/
-}content101;                                                                                                                                                                                             /**/
-/*******************************************************************************************************/
-
-/*102-开始登机消息 paramList******************************************************************************/
-typedef struct content102_s{                                                                                                                                                                  /**/
-    QString threeFlightNo;        //非必须    航班3字码                                                                                                                /**/
-    QString twoFlightNo;      //非必须    航班2字码                                                                                                                     /**/
-    QString depTimeJ{""};         //非必须    预计起飞时间                                                                                                                 /**/
-    QString boardingTime{""};       //登机时间
-    QString flightDate;       //非必须    航班日期yyyy-MM-dd                                                                                                     /**/
-    int status{-1};                  //非必须    航班状态  0-等待，1-建库，2-开始登机，3-结束登机，4-起飞                                            /**/
-    QString midwayCode;       //非必须    中转机场3字码                                                                                                           /**/
-    QString midwayName;       //非必须    中转机场名称                                                                                                            /**/
-    QString arrAirportCode;	    //非必须    到达机场3字码                                                                                                        /**/
-    QString arrAirportName;	    //非必须    到达机场名                                                                                                              /**/
-    QString depAirportCode;	    //非必须    起飞机场3字码                                                                                                        /**/
-    QString depAirportName;	//非必须    起飞机场名称                                                                                                          /**/
-    QStringList shareFltno;                                                                                                                                                                        /**/
-    int  kindType{-1};       //非必须    航班类型  0-原始，1-增加航班，2-删除航班，3-备降航班，4-二次返航航班                           /**/
-    bool manulOpt{false};      //非必须    true-人工拉取的航班，false-非人工拉取的航班                                                                  /**/
-    QString boardingGate;     //非必须    登机口                                                                                                                          /**/
-
-     content102_s &operator=(const content102_s& other){
-        if (this == &other)
-            return *this;
-        this->arrAirportCode = other.arrAirportCode;
-        this->arrAirportName = other.arrAirportName;
-        this->boardingGate = other.boardingGate;
-        this->boardingTime = other.boardingTime;
-        this->depAirportCode = other.depAirportCode;
-        this->depAirportName = other.depAirportName;
-        this->depTimeJ = other.depTimeJ;
-        this->flightDate = other.flightDate;
-        this->kindType = other.kindType;
-        this->manulOpt = other.manulOpt;
-        this->midwayCode = other.midwayCode;
-        this->midwayName = other.midwayName;
-        shareFltno.clear();
-        this->shareFltno = other.shareFltno;
-        this->status = other.status;
-        this->threeFlightNo = other.threeFlightNo;
-        this->twoFlightNo = other.twoFlightNo;
-        return *this;
-    }
-}content102;                                                                                                                                                                                             /**/
-/*******************************************************************************************************/
-
-/*103-结束登机消息 paramList******************************************************************************/
-typedef struct content103_s{                                                                                                                                                                   /**/
-    QString  threeFlightNo;        //非必须    航班3字码                                                                                                                /**/
-    QString twoFlightNo;      //非必须    航班2字码                                                                                                                     /**/
-    QString  depTimeJ{""};         //非必须    预计起飞时间                                                                                                                 /**/
-    QString  boardingTime{""};   //非必须   登机时间                                                                                                                        /**/
-    QString  flightDate;       //非必须    航班日期yyyy-MM-dd                                                                                                     /**/
-    int  status{-1};                  //非必须    航班状态  0-等待，1-建库，2-开始登机，3-结束登机，4-起飞                                            /**/
-    QString  midwayCode;       //非必须    中转机场3字码                                                                                                           /**/
-    QString  midwayName;       //非必须    中转机场名称                                                                                                            /**/
-    QString arrAirportCode;	    //非必须    到达机场3字码                                                                                                        /**/
-    QString  arrAirportName;	    //非必须    到达机场名                                                                                                              /**/
-    QString  depAirportCode;	    //非必须    起飞机场3字码                                                                                                        /**/
-    QString  depAirportName;	//非必须    起飞机场名称                                                                                                          /**/
-    int  boardingNum;
-    int  orgDepNum;
-    int  transferNum;
-    int  midwayNum;
-    int  faceNums;
-    QString lastRecogTime{""};
-    QStringList shareFltno;          //共享航班                                                                                                                                              /**/
-    int   kindType{-1};       //非必须    航班类型  0-原始，1-增加航班，2-删除航班，3-备降航班，4-二次返航航班                           /**/
-    bool  manulOpt{false};      //非必须    true-人工拉取的航班，false-非人工拉取的航班                                                                  /**/
-    QString  boardingGate;     //非必须    登机口                                                                                                                          /**/
-
-     content103_s &operator=(const content103_s& other){
-        if (this == &other)
-            return *this;
-        this->arrAirportCode = other.arrAirportCode;
-        this->arrAirportName = other.arrAirportName;
-        this->boardingGate = other.boardingGate;
-        this->boardingTime = other.boardingTime;
-        this->depAirportCode = other.depAirportCode;
-        this->depAirportName = other.depAirportName;
-        this->depTimeJ = other.depTimeJ;
-        this->flightDate = other.flightDate;
-        this->kindType = other.kindType;
-        this->manulOpt = other.manulOpt;
-        this->midwayCode = other.midwayCode;
-        this->midwayName = other.midwayName;
-        shareFltno.clear();
-        this->shareFltno = other.shareFltno;
-        this->status = other.status;
-        this->threeFlightNo = other.threeFlightNo;
-        this->twoFlightNo = other.twoFlightNo;
-        this->boardingNum = other.boardingNum;
-        this->orgDepNum = other.orgDepNum;
-        this->transferNum = other.transferNum;
-        this->midwayNum = other.midwayNum;
-        this->faceNums = other.faceNums;
-        this->lastRecogTime = other.lastRecogTime;
-        return *this;
-    }
-}content103;                                                                                                                                                                                             /**/
-/*******************************************************************************************************/
 
 /*109-删库消息 paramList**********************************************************************************/
 typedef struct content109_s{                                                                                                                                                                  /**/
@@ -600,9 +406,6 @@ enum API_PARAM_TYPE{
      qRegisterMetaType<gateWorkStatus>("gateWorkStatus");
      qRegisterMetaType<gateDoorStatus>("gateDoorStatus");
      qRegisterMetaType<FlightPlan>("FlightPlan");
-     qRegisterMetaType<content101>("content101");
-     qRegisterMetaType<content102>("content102");
-     qRegisterMetaType<content103>("content103");
      qRegisterMetaType<content109>("content109");
      qRegisterMetaType<content300>("content300");
      qRegisterMetaType<content301>("content301");
