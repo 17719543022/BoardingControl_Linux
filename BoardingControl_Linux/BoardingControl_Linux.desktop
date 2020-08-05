@@ -1,0 +1,24 @@
+[Desktop Entry]
+Version=1.0.0
+
+Name=BoardingControl_Linux
+Name[zh_CN]=登机口中控台
+Name[es]=BoardingControl_Linux
+
+#注释
+GenericName=GenericName
+#描述
+Comment=Comment
+#图标
+Icon=/home/cigit/BoardingControl_Linux/Images/desktopIcon.jpg
+#命令
+Exec=/home/cigit/BoardingControl_Linux/BoardingControl_Linux.sh
+
+Type=Application
+Keywords=board;boarding;Boarding;deng;dengji;dengjikou;中控台;登机口;登机;航班;控制;
+
+Terminal=false
+Encoding=UTF-8
+X-Ubuntu-Single-Instance=false
+X-Ubuntu-Touch=true
+

@@ -1,0 +1,1153 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HomePage</class>
+ <widget class="QMainWindow" name="HomePage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>1280</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>BoardingControl</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QWidget" name="widget_ALL" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>800</width>
+      <height>1280</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <widget class="QWidget" name="widget_gateCtrl" native="true">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>1088</y>
+       <width>800</width>
+       <height>192</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#widget_gateCtrl{background-color: rgb(1, 64, 109);}</string>
+     </property>
+     <widget class="QWidget" name="wg_2" native="true">
+      <property name="geometry">
+       <rect>
+        <x>16</x>
+        <y>8</y>
+        <width>144</width>
+        <height>174</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#wg_2{image: url(:/2系统首页/Images/2系统首页/按钮底框.png);}</string>
+      </property>
+      <widget class="QToolButton" name="Button_A1">
+       <property name="geometry">
+        <rect>
+         <x>4</x>
+         <y>14</y>
+         <width>134</width>
+         <height>70</height>
+        </rect>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{border:none;image: url(:/2系统首页/Images/2系统首页/A1门.png);}
+QToolButton:pressed{image: url(:/2系统首页/Images/2系统首页/A1门2.png);}
+</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>165</width>
+         <height>66</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="Button_B1">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>4</x>
+         <y>92</y>
+         <width>134</width>
+         <height>70</height>
+        </rect>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{border:none;image: url(:/2系统首页/Images/2系统首页/B1门.png);}
+QToolButton:pressed{image: url(:/2系统首页/Images/2系统首页/B1门2.png);}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>165</width>
+         <height>66</height>
+        </size>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="wg_3" native="true">
+      <property name="geometry">
+       <rect>
+        <x>172</x>
+        <y>8</y>
+        <width>144</width>
+        <height>174</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#wg_3{image: url(:/2系统首页/Images/2系统首页/按钮底框.png);}</string>
+      </property>
+      <widget class="QToolButton" name="Button_A2">
+       <property name="geometry">
+        <rect>
+         <x>4</x>
+         <y>14</y>
+         <width>134</width>
+         <height>70</height>
+        </rect>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{border:none;image: url(:/2系统首页/Images/2系统首页/A2门.png);}
+QToolButton:pressed{image: url(:/2系统首页/Images/2系统首页/A2门2.png);}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>165</width>
+         <height>66</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="Button_B2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>4</x>
+         <y>92</y>
+         <width>134</width>
+         <height>70</height>
+        </rect>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{border:none;image: url(:/2系统首页/Images/2系统首页/B2门.png);}
+QToolButton:pressed{image: url(:/2系统首页/Images/2系统首页/B2门2.png);}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>165</width>
+         <height>66</height>
+        </size>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="wg_4" native="true">
+      <property name="geometry">
+       <rect>
+        <x>484</x>
+        <y>8</y>
+        <width>144</width>
+        <height>174</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#wg_4{image: url(:/2系统首页/Images/2系统首页/按钮底框.png);}</string>
+      </property>
+      <widget class="QToolButton" name="Button_stop1">
+       <property name="geometry">
+        <rect>
+         <x>4</x>
+         <y>14</y>
+         <width>134</width>
+         <height>70</height>
+        </rect>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{border:none;image: url(:/2系统首页/Images/2系统首页/暂停（1号）.png);}
+QToolButton:pressed{image: url(:/2系统首页/Images/2系统首页/暂停（1号）2.png);}
+</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>165</width>
+         <height>66</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="Button_stop2">
+       <property name="geometry">
+        <rect>
+         <x>4</x>
+         <y>92</y>
+         <width>134</width>
+         <height>70</height>
+        </rect>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{border:none;image: url(:/2系统首页/Images/2系统首页/暂停（2号）.png);}
+QToolButton:pressed{image: url(:/2系统首页/Images/2系统首页/暂停（2号）2.png);}
+</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>165</width>
+         <height>66</height>
+        </size>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="wg_5" native="true">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>8</y>
+        <width>144</width>
+        <height>174</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#wg_5{image: url(:/2系统首页/Images/2系统首页/按钮底框.png);}</string>
+      </property>
+      <widget class="QToolButton" name="Button_keepClose1">
+       <property name="geometry">
+        <rect>
+         <x>4</x>
+         <y>14</y>
+         <width>134</width>
+         <height>70</height>
+        </rect>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{border:none;image: url(:/2系统首页/Images/2系统首页/常闭（1号）.png);}
+QToolButton:pressed{image: url(:/2系统首页/Images/2系统首页/常闭（1号）2.png);}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>165</width>
+         <height>66</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="Button_keepClose2">
+       <property name="geometry">
+        <rect>
+         <x>4</x>
+         <y>92</y>
+         <width>134</width>
+         <height>70</height>
+        </rect>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{border:none;image: url(:/2系统首页/Images/2系统首页/常闭（2号）.png);}
+QToolButton:pressed{image: url(:/2系统首页/Images/2系统首页/常闭（2号）2.png);}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>165</width>
+         <height>66</height>
+        </size>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="wg_6" native="true">
+      <property name="geometry">
+       <rect>
+        <x>328</x>
+        <y>10</y>
+        <width>144</width>
+        <height>174</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#wg_6{image: url(:/2系统首页/Images/2系统首页/按钮底框.png);}</string>
+      </property>
+      <widget class="QToolButton" name="Button_SideDoor1">
+       <property name="geometry">
+        <rect>
+         <x>4</x>
+         <y>14</y>
+         <width>134</width>
+         <height>70</height>
+        </rect>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{border:none;image: url(:/2系统首页/Images/2系统首页/侧门（1号）.png);}
+QToolButton:pressed{image: url(:/2系统首页/Images/2系统首页/侧门（1号）2.png);}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>165</width>
+         <height>66</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="Button_SideDoor2">
+       <property name="geometry">
+        <rect>
+         <x>4</x>
+         <y>92</y>
+         <width>134</width>
+         <height>70</height>
+        </rect>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{border:none;image: url(:/2系统首页/Images/2系统首页/侧门（2号）.png);}
+QToolButton:pressed{image: url(:/2系统首页/Images/2系统首页/侧门（2号）2.png);}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>165</width>
+         <height>66</height>
+        </size>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widget_logo" native="true">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>800</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#widget_logo{image: url(Images/logo.png);}</string>
+     </property>
+     <widget class="QLabel" name="label_boardingGateNo_">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>85</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>30</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>---</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_netStat">
+      <property name="geometry">
+       <rect>
+        <x>750</x>
+        <y>0</y>
+        <width>50</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="bordingcontrol_linux.qrc">:/2系统首页/Images/2系统首页/wifi/有.png</pixmap>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_currentTime">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>4</y>
+        <width>80</width>
+        <height>46</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>00:00:00</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Version">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>4</y>
+        <width>80</width>
+        <height>46</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>V2.0.0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widget_menuUp" native="true">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>50</y>
+       <width>800</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#widget_menuUp{background-color: rgb(0, 130, 180);}</string>
+     </property>
+     <widget class="QPushButton" name="Button_menu">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>5</y>
+        <width>80</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:none;</string>
+      </property>
+      <property name="icon">
+       <iconset resource="bordingcontrol_linux.qrc">
+        <normaloff>:/2系统首页/Images/2系统首页/设置.png</normaloff>:/2系统首页/Images/2系统首页/设置.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>46</width>
+        <height>42</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_return">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>5</y>
+        <width>46</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:none;</string>
+      </property>
+      <property name="icon">
+       <iconset resource="bordingcontrol_linux.qrc">
+        <normaloff>:/2系统首页/Images/2系统首页/返回.png</normaloff>:/2系统首页/Images/2系统首页/返回.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>22</width>
+        <height>36</height>
+       </size>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="Button_changeBoardingMode_face">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>12</y>
+        <width>88</width>
+        <height>34</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolButton{
+border:none; 
+image: url(:/2系统首页/Images/2系统首页/切换登机模式/人脸模式-拷贝.png);
+}
+QToolButton:checked{
+ image: url(:/2系统首页/Images/2系统首页/切换登机模式/人脸模式.png);
+}
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>276</width>
+        <height>47</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="ScrollText_Horizontal" name="label_statTips">
+      <property name="geometry">
+       <rect>
+        <x>62</x>
+        <y>10</y>
+        <width>300</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignHCenter|Qt::AlignTop</set>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="Button_changeBoardingMode_quick">
+      <property name="geometry">
+       <rect>
+        <x>688</x>
+        <y>12</y>
+        <width>88</width>
+        <height>34</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolButton{
+border:none; 
+image: url(:/2系统首页/Images/2系统首页/切换登机模式/快速模式-拷贝.png);
+}
+QToolButton:checked{
+ image: url(:/2系统首页/Images/2系统首页/切换登机模式/快速模式.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>276</width>
+        <height>47</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widget_menuBelow" native="true">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>-96</y>
+       <width>800</width>
+       <height>196</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#widget_menuBelow{background-color: rgb(0, 130, 180);}</string>
+     </property>
+     <widget class="QPushButton" name="Button_FlightEnquires">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>110</y>
+        <width>180</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{border:0;image: url(:/2系统首页/Images/2系统首页/下拉窗口/航班回查.png);}
+QPushButton:pressed{image: url(:/2系统首页/Images/2系统首页/下拉窗口/航班回查-拷贝.png);}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>180</width>
+        <height>60</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_PortraitCollection">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>110</y>
+        <width>180</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{border:0;image: url(:/2系统首页/Images/2系统首页/下拉窗口/人像采集.png);}
+QPushButton:pressed{image: url(:/2系统首页/Images/2系统首页/下拉窗口/人像采集-拷贝.png);}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>180</width>
+        <height>60</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_WorkflowRecording">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>30</y>
+        <width>180</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{border:0;image: url(:/2系统首页/Images/2系统首页/下拉窗口/全流程记录.png);}
+QPushButton:pressed{image: url(:/2系统首页/Images/2系统首页/下拉窗口/全流程记录-拷贝.png);}
+
+
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>180</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_RealtimeBoarding">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>30</y>
+        <width>180</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{border:0;image: url(:/2系统首页/Images/2系统首页/下拉窗口/实时登机.png);}
+QPushButton:pressed{image: url(:/2系统首页/Images/2系统首页/下拉窗口/实时登机-拷贝.png);}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>180</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="autoRepeatInterval">
+       <number>100</number>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_SignOut">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>110</y>
+        <width>180</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{border-radius:10;image: url(:/2系统首页/Images/2系统首页/下拉窗口/退出登录.png);}
+QPushButton:pressed{image: url(:/2系统首页/Images/2系统首页/下拉窗口/退出登录-拷贝.png);}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>180</width>
+        <height>60</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_HomePage">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>30</y>
+        <width>180</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{border:0;image: url(:/2系统首页/Images/2系统首页/下拉窗口/系统首页.png);}
+QPushButton:pressed{image: url(:/2系统首页/Images/2系统首页/下拉窗口/系统首页-拷贝.png);}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>180</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="autoRepeatInterval">
+       <number>100</number>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widget_workForeground" native="true">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>110</y>
+       <width>800</width>
+       <height>978</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+    </widget>
+    <widget class="QWidget" name="widget_work" native="true">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>110</y>
+       <width>800</width>
+       <height>978</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <widget class="QWidget" name="widget_home" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>800</width>
+        <height>978</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#widget_home{background-color: rgb(1, 64, 109);}</string>
+      </property>
+      <widget class="QWidget" name="wg_homeOptions" native="true">
+       <property name="geometry">
+        <rect>
+         <x>15</x>
+         <y>10</y>
+         <width>770</width>
+         <height>958</height>
+        </rect>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#wg_homeOptions{image: url(:/2系统首页/Images/2系统首页/bg-拷贝.png);}</string>
+       </property>
+       <widget class="QPushButton" name="Button_WorkflowRecording_2">
+        <property name="geometry">
+         <rect>
+          <x>97</x>
+          <y>270</y>
+          <width>576</width>
+          <height>188</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>20</pointsize>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius:10;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="bordingcontrol_linux.qrc">
+          <normaloff>:/2系统首页/Images/2系统首页/全流程记录1.png</normaloff>
+          <disabledoff>:/2系统首页/Images/2系统首页/全流程记录1.png</disabledoff>
+          <disabledon>:/2系统首页/Images/2系统首页/全流程记录1.png</disabledon>:/2系统首页/Images/2系统首页/全流程记录1.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>576</width>
+          <height>188</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="Button_RealtimeBoarding_2">
+        <property name="geometry">
+         <rect>
+          <x>97</x>
+          <y>41</y>
+          <width>576</width>
+          <height>188</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>20</pointsize>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius:10;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="bordingcontrol_linux.qrc">
+          <normaloff>:/2系统首页/Images/2系统首页/实时登机1.png</normaloff>
+          <disabledoff>:/2系统首页/Images/2系统首页/实时登机1.png</disabledoff>
+          <disabledon>:/2系统首页/Images/2系统首页/实时登机1.png</disabledon>:/2系统首页/Images/2系统首页/实时登机1.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>576</width>
+          <height>188</height>
+         </size>
+        </property>
+        <property name="autoRepeatInterval">
+         <number>100</number>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="Button_PortraitCollection_2">
+        <property name="geometry">
+         <rect>
+          <x>97</x>
+          <y>728</y>
+          <width>576</width>
+          <height>188</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>20</pointsize>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius:10;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="bordingcontrol_linux.qrc">
+          <normaloff>:/2系统首页/Images/2系统首页/人像采集1.png</normaloff>
+          <disabledoff>:/2系统首页/Images/2系统首页/人像采集1.png</disabledoff>
+          <disabledon>:/2系统首页/Images/2系统首页/人像采集1.png</disabledon>:/2系统首页/Images/2系统首页/人像采集1.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>576</width>
+          <height>188</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="Button_FlightEnquires_2">
+        <property name="geometry">
+         <rect>
+          <x>97</x>
+          <y>499</y>
+          <width>576</width>
+          <height>188</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>20</pointsize>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius:10;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="bordingcontrol_linux.qrc">
+          <normaloff>:/2系统首页/Images/2系统首页/航班回查1.png</normaloff>
+          <disabledoff>:/2系统首页/Images/2系统首页/航班回查1.png</disabledoff>
+          <disabledon>:/2系统首页/Images/2系统首页/航班回查1.png</disabledon>:/2系统首页/Images/2系统首页/航班回查1.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>576</width>
+          <height>188</height>
+         </size>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <zorder>widget_work</zorder>
+    <zorder>widget_gateCtrl</zorder>
+    <zorder>widget_workForeground</zorder>
+    <zorder>widget_menuBelow</zorder>
+    <zorder>widget_logo</zorder>
+    <zorder>widget_menuUp</zorder>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ScrollText_Horizontal</class>
+   <extends>QLabel</extends>
+   <header>ScrollText.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>Button_A1</tabstop>
+  <tabstop>Button_B1</tabstop>
+  <tabstop>Button_A2</tabstop>
+  <tabstop>Button_B2</tabstop>
+  <tabstop>Button_stop1</tabstop>
+  <tabstop>Button_stop2</tabstop>
+  <tabstop>Button_keepClose1</tabstop>
+  <tabstop>Button_keepClose2</tabstop>
+  <tabstop>Button_menu</tabstop>
+  <tabstop>Button_return</tabstop>
+  <tabstop>Button_FlightEnquires</tabstop>
+  <tabstop>Button_PortraitCollection</tabstop>
+  <tabstop>Button_RealtimeBoarding</tabstop>
+  <tabstop>Button_WorkflowRecording</tabstop>
+  <tabstop>Button_SignOut</tabstop>
+  <tabstop>Button_HomePage</tabstop>
+ </tabstops>
+ <resources>
+  <include location="bordingcontrol_linux.qrc"/>
+ </resources>
+ <connections/>
+</ui>

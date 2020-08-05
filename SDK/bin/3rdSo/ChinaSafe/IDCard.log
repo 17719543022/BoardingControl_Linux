@@ -1,0 +1,7 @@
+2020/3/27 20:0:7
+ ./3rdSo/ChinaSafe/: 0.002000 
+ CProcess::ReadLicenseConfiguration: 51.628000 
+ CProcess::IsExpired: 0.001000 
+ CProcess::InitDevice: 0.015000 
+ CProcess::LoadRecogTemplate: 2.393000 
+ CProcess::InitIDCardEx: 277.944000 
